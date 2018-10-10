@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            background-color: #eee;
+        }
+        .game{
+          margin: 0 auto;
+          max-width: 800px;
+        }
+        #button {
+                position: absolute;
+                z-index: 100;
+                left: 50%;
+                top: 50%;
+                width: 300px;
+                height: 260px;
+                margin-left: -150px;
+                margin-top: -160px;
+                display: block;
+                -webkit-user-select: none;
+                transition: margin 300ms;
+            }
+
+            body.show-embed-code #button {
+                margin-top: -250px;
+            }
+
+            #button .one {
+                position: absolute;
+                z-index: 190;
+                left: 20px;
+                top: 0px;
+                width: 260px;
+                height: 200px;
+                background: url(DTYDtext.png) center center no-repeat #85b1ff;
+                border-radius: 50%;
+                transition: top 200ms;
+            }
+
+            #button:hover .one {
+                top: -5px;
+            }
+
+            #button:active .one, #button .one:active {
+                top: 10px;
+            }
+
+            #button .cover {
+                position: absolute;
+                z-index: 180;
+                top: 100px;
+                width: 20px;
+                height: 30px;
+                background: #85b1ff;
+                transition: top 200ms, height 200ms;
+                background-color: rgba(103, 156, 249, 0.92);
+            }
+
+            #button:hover .cover {
+                top: 95px;
+                height: 35px;
+            }
+
+            #button:active .cover, #button .cover:active {
+                top: 110px;
+                height: 20px;
+            }
+
+            #button .cover.left {
+                left: 20px;
+            }
+
+            #button .cover.right {
+                right: 20px;
+            }
+
+            #button .two {
+                position: absolute;
+                z-index: 170;
+                left: 20px;
+                top: 25px;
+                width: 260px;
+                height: 200px;
+                background: rgba(103, 156, 249, 0.92);
+                border-radius: 50%;
+            }
+
+            #button .three {
+                position: absolute;
+                z-index: 160;
+                left: 5px;
+                top: 15px;
+                width: 290px;
+                height: 225px;
+                background: #FFF;
+                border-radius: 50%;
+            }
+
+            #button .four {
+                position: absolute;
+                z-index: 150;
+                left: 0px;
+                top: 20px;
+                width: 300px;
+                height: 230px;
+                background: #c8c8c8;
+                border-radius: 50%;
+            }
+
+            #button .five {
+                position: absolute;
+                z-index: 140;
+                left: 0px;
+                top: 30px;
+                width: 300px;
+                height: 230px;
+                background: #8c8b8b;
+                border-radius: 50%;
+                box-shadow: 0px 0px 100px -30px #000;
+            }
+            #dabbers{
+              padding:10px;
+              margin: 200px auto;
+              width: 100%;
+              max-width: 514px;
+            }
+            .dabber{
+              text-align: center;
+              display: inline-block;
+              height: 63px;
+              width: 42px;
+              background-image: url(dabber.png);
+              background-size: cover;
+            }
+            .drake{
+              position: absolute;
+              max-width:510px;
+              width: 100%;
+              height: 422px;
+              background-color: #fff;
+              background-image: url(drakedab.png);
+              background-size: cover;
+              background-position: center;
+              z-index: 999;
+            }
+            @media screen and (max-width:540px) {
+              #dabbers{
+                padding: 0;
+              }
+              .drake{
+                background-color: rgba(255, 255, 255, 0);
+                height: 380px;
+              }
+              .dabber{
+                height: 63px;
+                width: 37px;
+              }
+            }
+    </style>
+    <script>
+      var count = 0
+      function dtyd(){
+        $('#dabbers').prepend('<div class="dabber"></div>')
+        count++;
+        console.log("dtyd count", count);
+        if (count < 72 && count%12 === 0) {
+          var obj = document.createElement("audio");
+          obj.src = "lookatmydab.mp3";
+          obj.volume = 0.6;
+          obj.autoPlay = false;
+          obj.preLoad = true;
+          obj.controls = true;
+          obj.play();
+        } else if (count === 72) {
+          $('.dabber').remove();
+          $('#dabbers').append('<div class="drake"></div>')
+          $('.drake').fadeOut(2900, function() {
+                        $(this).remove();
+                      });
+
+          var obj = document.createElement("audio");
+          obj.src = "call-me-cellphone.mp3";
+          obj.volume = 0.6;
+          obj.autoPlay = false;
+          obj.preLoad = true;
+          obj.controls = true;
+          obj.play();
+          count = 0;
+        } else {
+          var obj = document.createElement("audio");
+          obj.src = "dab.mp3";
+          obj.volume = 0.4;
+          obj.autoPlay = false;
+          obj.preLoad = true;
+          obj.controls = true;
+          obj.play();
+        }
+      }
+    </script>
+</head>
+<body>
+  <div id="dabbers"><div>
+  <a id="button" href="#" onclick="return dtyd()">
+		<div class="one"></div>
+		<div class="cover left"></div>
+		<div class="cover right"></div>
+		<div class="two"></div>
+		<div class="three"></div>
+		<div class="four"></div>
+		<div class="five"></div>
+	</a>
+
+</body>
+</html>
