@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>DTYD</title>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -17,9 +18,10 @@
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 300;
         }
-        .game{
-          margin: 0 auto;
-          max-width: 800px;
+
+        .container{
+          width: 100%;
+          height: 100%;
         }
         #button {
                 position: absolute;
@@ -134,7 +136,7 @@
             }
             #dabbers{
               padding:10px;
-              margin: 200px auto;
+              margin: 150px auto;
               width: 100%;
               max-width: 514px;
             }
@@ -158,12 +160,14 @@
               z-index: 999;
             }
             .byJeffy{
-              font-size: 12px;
+              font-size: 13px;
               text-align: center;
               color: #888;
               position: absolute;
               bottom: 0;
-              padding: 20px
+              right: 50%;
+              padding: 30px  0;
+              margin-right: -16px;
             }
             @media screen and (max-width:540px) {
               #dabbers{
@@ -185,7 +189,7 @@
         $('#dabbers').prepend('<div class="dabber"></div>')
         count++;
         console.log("dtyd count", count);
-        if (count < 72 && count%12 === 0) {
+        if (count < 84 && count%12 === 0) {
           var obj = document.createElement("audio");
           obj.src = "lookatmydab.mp3";
           obj.volume = 0.6;
@@ -193,7 +197,7 @@
           obj.preLoad = true;
           obj.controls = true;
           obj.play();
-        } else if (count === 72) {
+        } else if (count === 84) {
           $('.dabber').remove();
           $('#dabbers').append('<div class="drake"></div>')
           $('.drake').fadeOut(2900, function() {
@@ -221,16 +225,18 @@
     </script>
 </head>
 <body>
-  <div id="dabbers"><div>
-  <a id="button" href="#" onclick="return dtyd()">
-		<div class="one"></div>
-		<div class="cover left"></div>
-		<div class="cover right"></div>
-		<div class="two"></div>
-		<div class="three"></div>
-		<div class="four"></div>
-		<div class="five"></div>
-	</a>
+  <div class="container">
+    <div id="dabbers"></div>
+    <a id="button" href="#" onclick="return dtyd()">
+  		<div class="one"></div>
+  		<div class="cover left"></div>
+  		<div class="cover right"></div>
+  		<div class="two"></div>
+  		<div class="three"></div>
+  		<div class="four"></div>
+  		<div class="five"></div>
+  	</a>
+  </div>
   <div class="byJeffy">
     By Jeffy
   </div>
