@@ -9,10 +9,13 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
         body {
             margin: 0;
             text-align: center;
             background-color: #eee;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 300;
         }
         .game{
           margin: 0 auto;
@@ -154,6 +157,14 @@
               background-position: center;
               z-index: 999;
             }
+            .byJeffy{
+              font-size: 12px;
+              text-align: center;
+              color: #888;
+              position: absolute;
+              bottom: 0;
+              padding: 20px
+            }
             @media screen and (max-width:540px) {
               #dabbers{
                 padding: 0;
@@ -220,6 +231,8 @@
 		<div class="four"></div>
 		<div class="five"></div>
 	</a>
-
+  <div class="byJeffy">
+    By Jeffy
+  </div>
 </body>
 </html>
