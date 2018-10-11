@@ -60,7 +60,9 @@
             #button:active .one, #button .one:active {
                 top: 10px;
             }
-
+            #button:focus{
+              outline: 0;
+            }
             #button .cover {
                 position: absolute;
                 z-index: 180;
@@ -136,7 +138,7 @@
             }
             #dabbers{
               padding:10px;
-              margin: 150px auto;
+              margin: 200px auto 0;
               width: 100%;
               max-width: 514px;
             }
@@ -158,6 +160,7 @@
               background-size: cover;
               background-position: center;
               z-index: 999;
+              margin-top: 40px;
             }
             .byJeffy{
               font-size: 13px;
@@ -172,10 +175,12 @@
             @media screen and (max-width:540px) {
               #dabbers{
                 padding: 0;
+                margin-top: 40px;
               }
               .drake{
                 background-color: rgba(255, 255, 255, 0);
                 height: 380px;
+                margin-top: 90px;
               }
               .dabber{
                 height: 63px;
@@ -184,7 +189,7 @@
             }
             @media screen and (max-width:425px) {
               #dabbers{
-                margin-top: 80px;
+
               }
             }
     </style>
@@ -194,7 +199,7 @@
         $('#dabbers').prepend('<div class="dabber"></div>')
         count++;
         console.log("dtyd count", count);
-        if (count < 84 && count%12 === 0) {
+        if (count < 72 && count%12 === 0) {
           var obj = document.createElement("audio");
           obj.src = "lookatmydab.mp3";
           obj.volume = 0.6;
@@ -202,10 +207,10 @@
           obj.preLoad = true;
           obj.controls = true;
           obj.play();
-        } else if (count === 84) {
+        } else if (count === 72) {
           $('.dabber').remove();
           $('#dabbers').append('<div class="drake"></div>')
-          $('.drake').fadeOut(2900, function() {
+          $('.drake').fadeOut(3300,  function() {
                         $(this).remove();
                       });
 
